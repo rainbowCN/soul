@@ -1,0 +1,57 @@
+理论
+------------------------------------------
+函数：
+1、全局函数事实上是window对象的属性
+2、独立于对象系统而存在的“纯粹函数”，例如匿名函数、内嵌函数等。
+3、函数的引用决定着函数的生命周期，对象属性的引用
+4、函数前有new的情况（var this=new Object）
+5、没有返回值、return alert(test())为undefined。
+6、new Function('\alert(value);\');value访问的是全局闭包
+
+单独声明
+------------------------------------------
+function fn(){
+
+}
+
+//object/函数绑定
+this.fn = function(){
+}
+div.onclick= function(){
+}
+
+
+//json
+fn = function(){
+
+}
+
+
+函数的命名和定义
+------------------------------------------
+function aaaa(){
+    alert('a');
+}
+
+oDiv.onclick=aaaa;
+
+oDiv.onclick=function (){
+    alert('a');
+}
+
+函数的调用(简写)
+------------------------------------------
+function show(){
+    alert(this);
+}
+show();      //this=window
+show.call(); //this=window
+
+
+函数参数命名范例参考
+------------------------------------------
+function VQuery(vArg){
+
+}
+function myAddEvent(obj, sEv, fn){
+}

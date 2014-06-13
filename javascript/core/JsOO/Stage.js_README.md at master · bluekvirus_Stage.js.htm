@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html class="   "><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    
+    <title>Stage.js/README.md at master · bluekvirus/Stage.js</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="bluekvirus/Stage.js" name="twitter:title"><meta content="Stage.js - Web application front-end framework" name="twitter:description"><meta content="https://avatars0.githubusercontent.com/u/1764731?s=400" name="twitter:image:src">
+<meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="https://avatars0.githubusercontent.com/u/1764731?s=400" property="og:image"><meta content="bluekvirus/Stage.js" property="og:title"><meta content="https://github.com/bluekvirus/Stage.js" property="og:url"><meta content="Stage.js - Web application front-end framework" property="og:description">
+
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="https://github.com/_sockets">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="github" name="octolytics-app-id"><meta content="3B6C1D36:1EFE:199BBACA:538E80D8" name="octolytics-dimension-request_id"><meta content="1921263" name="octolytics-actor-id"><meta content="rainbowCN" name="octolytics-actor-login"><meta content="c3caba6e40ce1a740854ff7768f0cf963c0fe81b0b2cd8e95976c973782e0dd0" name="octolytics-actor-hash">
+    
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="2Z92POLAM8XUmAjlNlZCa7VNPJuc2Y4LsSwmE+HhzcLKjwqP1GCjcZwl99uLuiVenADJt6wABT33uyUlyOf82w==" name="csrf-token">
+
+    <link href="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/github-3fbc8ed7662a68f636e9db2134408ae87d1fa298.css" media="all" rel="stylesheet" type="text/css">
+    <link href="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/github2-f8705d17741c213939d96bed1f5c89eb7d96b9f6.css" media="all" rel="stylesheet" type="text/css">
+    
+
+
+    <meta http-equiv="x-pjax-version" content="459ad77dbaeaa734257b3c7b708abfca">
+
+      
+  <meta name="description" content="Stage.js - Web application front-end framework">
+
+  <meta content="1764731" name="octolytics-dimension-user_id"><meta content="bluekvirus" name="octolytics-dimension-user_login"><meta content="7649376" name="octolytics-dimension-repository_id"><meta content="bluekvirus/Stage.js" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="7649376" name="octolytics-dimension-repository_network_root_id"><meta content="bluekvirus/Stage.js" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/bluekvirus/Stage.js/commits/master.atom" rel="alternate" title="Recent Commits to Stage.js:master" type="application/atom+xml">
+
+  <script src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/api.js" async="" type="text/javascript"></script><meta data-pjax-transient="true" name="selected-link" value="repo_source"></head>
+
+
+  <body class="logged_in  env-production windows vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+    
+    <a href="https://github.com/notifications" aria-label="You have unread notifications" class="notification-indicator tooltipped tooltipped-s" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+</a>
+
+      <div class="command-bar js-command-bar  in-repository">
+          <form accept-charset="UTF-8" action="/search" class="command-bar-form" id="top_search_form" method="get">
+
+<div class="commandbar">
+  <span class="message"></span>
+  <input data-hotkey="s" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off" data-username="rainbowCN" data-repo="bluekvirus/Stage.js" data-branch="master" data-sha="40734c3f17a7cf0f908c29133ea97040e202457a" type="text">
+  <div class="display hidden"></div>
+</div>
+
+    <input name="nwo" value="bluekvirus/Stage.js" type="hidden">
+
+    <div class="select-menu js-menu-container js-select-menu search-context-select-menu">
+      <span class="minibutton select-menu-button js-menu-target" role="button" aria-haspopup="true">
+        <span class="js-select-button">This repository</span>
+      </span>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container" aria-hidden="true">
+        <div class="select-menu-modal">
+
+          <div class="select-menu-item js-navigation-item js-this-repository-navigation-item selected">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input class="js-search-this-repository" name="search_target" value="repository" checked="checked" type="radio">
+            <div class="select-menu-item-text js-select-button-text">This repository</div>
+          </div> <!-- /.select-menu-item -->
+
+          <div class="select-menu-item js-navigation-item js-all-repositories-navigation-item">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input name="search_target" value="global" type="radio">
+            <div class="select-menu-item-text js-select-button-text">All repositories</div>
+          </div> <!-- /.select-menu-item -->
+
+        </div>
+      </div>
+    </div>
+
+  <span class="help tooltipped tooltipped-s" aria-label="Show command bar help">
+    <span class="octicon octicon-question"></span>
+  </span>
+
+
+  <input name="ref" value="cmdform" type="hidden">
+
+</form>
+        <ul class="top-nav">
+          <li class="explore"><a href="https://github.com/explore">Explore</a></li>
+            <li><a href="https://gist.github.com/">Gist</a></li>
+            <li><a href="https://github.com/blog">Blog</a></li>
+          <li><a href="https://help.github.com/">Help</a></li>
+        </ul>
+      </div>
+
+    
+
+
+  <ul id="user-links">
+    <li>
+      <a href="https://github.com/rainbowCN" class="name">
+        <img alt="rainbow" class=" js-avatar" data-user="1921263" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/1921263.png" height="20" width="20"> rainbowCN
+      </a>
+    </li>
+
+    <li class="new-menu dropdown-toggle js-menu-container">
+      <a href="#" class="js-menu-target tooltipped tooltipped-s" aria-label="Create new...">
+        <span class="octicon octicon-plus"></span>
+        <span class="dropdown-arrow"></span>
+      </a>
+
+      <div class="new-menu-content js-menu-content">
+      </div>
+    </li>
+
+    <li>
+      <a href="https://github.com/settings/profile" id="account_settings" class="tooltipped tooltipped-s" aria-label="Account settings ">
+        <span class="octicon octicon-tools"></span>
+      </a>
+    </li>
+    <li>
+      <form class="logout-form" action="/logout" method="post">
+        <button class="sign-out-button tooltipped tooltipped-s" aria-label="Sign out">
+          <span class="octicon octicon-sign-out"></span>
+        </button>
+      </form>
+    </li>
+
+  </ul>
+
+<div class="js-new-dropdown-contents hidden">
+  
+
+<ul class="dropdown-menu">
+  <li>
+    <a href="https://github.com/new"><span class="octicon octicon-repo"></span> New repository</a>
+  </li>
+  <li>
+    <a href="https://github.com/organizations/new"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+    <li class="section-title">
+      <span title="bluekvirus/Stage.js">This repository</span>
+    </li>
+      <li>
+        <a href="https://github.com/bluekvirus/Stage.js/issues/new"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+</ul>
+
+</div>
+
+
+    
+  </div>
+</div>
+
+      
+
+        
+
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container"><div id="pjax-flash">
+  
+</div></div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+
+<ul class="pagehead-actions">
+
+    <li class="subscription">
+      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" value="MOKhEt8vvcx4lJoL3Sy+MdAcPYPhRcuAI6yeCEq/Jd8BVxUqNgKbev1LuWDIT9Yz3XbQ/xlDvfQJ7qRmI/kFDA==" type="hidden"></div>  <input id="repository_id" name="repository_id" value="7649376" type="hidden">
+
+    <div class="select-menu js-menu-container js-select-menu">
+      <a class="social-count js-social-count" href="https://github.com/bluekvirus/Stage.js/watchers">
+        2
+      </a>
+      <span class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0" aria-haspopup="true">
+        <span class="js-select-button">
+          <span class="octicon octicon-eye"></span>
+          Watch
+        </span>
+      </span>
+
+      <div class="select-menu-modal-holder">
+        <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notification status</span>
+            <span class="octicon octicon-x js-menu-close"></span>
+          </div> <!-- /.select-menu-header -->
+
+          <div class="select-menu-list js-navigation-container" role="menu">
+
+            <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input checked="checked" id="do_included" name="do" value="included" type="radio">
+                <h4>Not watching</h4>
+                <span class="description">You only receive notifications for conversations in which you participate or are @mentioned.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye"></span>
+                  Watch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_subscribed" name="do" value="subscribed" type="radio">
+                <h4>Watching</h4>
+                <span class="description">You receive notifications for all conversations in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye"></span>
+                  Unwatch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_ignore" name="do" value="ignore" type="radio">
+                <h4>Ignoring</h4>
+                <span class="description">You do not receive any notifications for conversations in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-mute"></span>
+                  Stop ignoring
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+          </div> <!-- /.select-menu-list -->
+
+        </div> <!-- /.select-menu-modal -->
+      </div> <!-- /.select-menu-modal-holder -->
+    </div> <!-- /.select-menu -->
+
+</form>
+    </li>
+
+  <li>
+  
+
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <form accept-charset="UTF-8" action="/bluekvirus/Stage.js/unstar" class="js-toggler-form starred" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" value="P/ue3UCtUc+BxGMo94MV0qqt3kIaM+pBBMKZbEVh+M/Jx3fhQSj7UymvTnHSTchzuxi+BNt+eXzDBHHpLBW16A==" type="hidden"></div>
+      <button class="minibutton with-count js-toggler-target star-button" aria-label="Unstar this repository" title="Unstar bluekvirus/Stage.js">
+        <span class="octicon octicon-star"></span><span class="text">Unstar</span>
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/bluekvirus/Stage.js/stargazers">
+          2
+        </a>
+</form>
+    <form accept-charset="UTF-8" action="/bluekvirus/Stage.js/star" class="js-toggler-form unstarred" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" value="xoJkegOm7BhFwrG1n2WvfRTOeUjkhUyfGg4+v9HORBNmzR5Q7VH0RGE+n0FMGBSGHmhtwW4HqHtDruroEB6HRw==" type="hidden"></div>
+      <button class="minibutton with-count js-toggler-target star-button" aria-label="Star this repository" title="Star bluekvirus/Stage.js">
+        <span class="octicon octicon-star"></span><span class="text">Star</span>
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/bluekvirus/Stage.js/stargazers">
+          2
+        </a>
+</form>  </div>
+
+  </li>
+
+
+        <li>
+          <a href="https://github.com/bluekvirus/Stage.js/fork" class="minibutton with-count js-toggler-target fork-button lighter tooltipped-n" title="Fork your own copy of bluekvirus/Stage.js to your account" aria-label="Fork your own copy of bluekvirus/Stage.js to your account" rel="nofollow" data-method="post">
+            <span class="octicon octicon-repo-forked"></span><span class="text">Fork</span>
+          </a>
+          <a href="https://github.com/bluekvirus/Stage.js/network" class="social-count">1</a>
+        </li>
+
+
+</ul>
+
+        <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="repo-label"><span>public</span></span>
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="https://github.com/bluekvirus" class="url fn" itemprop="url" rel="author"><span itemprop="title">bluekvirus</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="https://github.com/bluekvirus/Stage.js" class="js-current-repository js-repo-home-link">Stage.js</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline js-new-discussion-timeline">
+        <div class="repository-sidebar clearfix">
+            
+
+<div class="sunken-menu vertical-right repo-nav js-repo-nav js-repository-container-pjax js-octicon-loaders">
+  <div class="sunken-menu-contents">
+    <ul class="sunken-menu-group">
+      <li class="tooltipped tooltipped-w" aria-label="Code">
+        <a href="https://github.com/bluekvirus/Stage.js" aria-label="Code" class="js-selected-navigation-item sunken-menu-item selected" data-hotkey="g c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /bluekvirus/Stage.js">
+          <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+          <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>      </li>
+
+        <li class="tooltipped tooltipped-w" aria-label="Issues">
+          <a href="https://github.com/bluekvirus/Stage.js/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-hotkey="g i" data-selected-links="repo_issues /bluekvirus/Stage.js/issues">
+            <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+            <span class="counter">0</span>
+            <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>        </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Pull Requests">
+        <a href="https://github.com/bluekvirus/Stage.js/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-hotkey="g p" data-selected-links="repo_pulls /bluekvirus/Stage.js/pulls">
+            <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+            <span class="counter">0</span>
+            <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>      </li>
+
+
+        <li class="tooltipped tooltipped-w" aria-label="Wiki">
+          <a href="https://github.com/bluekvirus/Stage.js/wiki" aria-label="Wiki" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-hotkey="g w" data-selected-links="repo_wiki /bluekvirus/Stage.js/wiki">
+            <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+            <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>        </li>
+    </ul>
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+
+      <li class="tooltipped tooltipped-w" aria-label="Pulse">
+        <a href="https://github.com/bluekvirus/Stage.js/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="pulse /bluekvirus/Stage.js/pulse">
+          <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+          <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>      </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Graphs">
+        <a href="https://github.com/bluekvirus/Stage.js/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_graphs repo_contributors /bluekvirus/Stage.js/graphs">
+          <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+          <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>      </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Network">
+        <a href="https://github.com/bluekvirus/Stage.js/network" aria-label="Network" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-selected-links="repo_network /bluekvirus/Stage.js/network">
+          <span class="octicon octicon-repo-forked"></span> <span class="full-word">Network</span>
+          <img alt="" class="mini-loader" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/octocat-spinner-32.gif" height="16" width="16">
+</a>      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+              <div class="only-with-full-nav">
+                
+
+  
+
+<div class="clone-url open" data-protocol-type="http" data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input class="clone js-url-field" value="https://github.com/bluekvirus/Stage.js.git" readonly="readonly" type="text">
+    <span class="url-box-clippy">
+    <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="https://github.com/bluekvirus/Stage.js.git" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url " data-protocol-type="ssh" data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
+  <h3><strong>SSH</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input class="clone js-url-field" value="git@github.com:bluekvirus/Stage.js.git" readonly="readonly" type="text">
+    <span class="url-box-clippy">
+    <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="git@github.com:bluekvirus/Stage.js.git" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url " data-protocol-type="subversion" data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><strong>Subversion</strong> checkout URL</h3>
+  <div class="clone-url-box">
+    <input class="clone js-url-field" value="https://github.com/bluekvirus/Stage.js" readonly="readonly" type="text">
+    <span class="url-box-clippy">
+    <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="https://github.com/bluekvirus/Stage.js" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>,
+      <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>,
+      or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <span class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <a href="https://help.github.com/articles/which-remote-url-should-i-use">
+    <span class="octicon octicon-question"></span>
+    </a>
+  </span>
+</p>
+
+
+  <a href="github-windows://openRepo/https://github.com/bluekvirus/Stage.js" class="minibutton sidebar-button" title="Save bluekvirus/Stage.js to your computer and use it in GitHub Desktop." aria-label="Save bluekvirus/Stage.js to your computer and use it in GitHub Desktop.">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+                <a href="https://github.com/bluekvirus/Stage.js/archive/master.zip" class="minibutton sidebar-button" aria-label="Download bluekvirus/Stage.js as a zip file" title="Download bluekvirus/Stage.js as a zip file" rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+  
+
+
+<a href="https://github.com/bluekvirus/Stage.js/blob/5d98a72612c0f0e15d30a6b745b919f2ecb4490a/README.md" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+<!-- blob contrib key: blob_contributors:v21:89cdc377ee73bd155d0ed4bf998f1933 -->
+
+<p title="This is a placeholder element" class="js-history-link-replace hidden"></p>
+
+<a href="https://github.com/bluekvirus/Stage.js/find/master" data-pjax="" data-hotkey="t" class="js-show-file-finder" style="display:none">Show File Finder</a>
+
+<div class="file-navigation">
+  
+
+<div class="select-menu js-menu-container js-select-menu">
+  <span class="minibutton select-menu-button js-menu-target" data-hotkey="w" data-master-branch="master" data-ref="master" role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <span class="octicon octicon-git-branch"></span>
+    <i>branch:</i>
+    <span class="js-select-button">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-x js-menu-close"></span>
+      </div> <!-- /.select-menu-header -->
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags" type="text">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" class="js-select-menu-tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" class="js-select-menu-tab">Tags</a>
+            </li>
+          </ul>
+        </div><!-- /.select-menu-tabs -->
+      </div><!-- /.select-menu-filters -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/0.9/README.md" data-name="0.9" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="0.9">0.9</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/0.10/README.md" data-name="0.10" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="0.10">0.10</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/0.13.0/README.md" data-name="0.13.0" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="0.13.0">0.13.0</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/1.0.0-pre/README.md" data-name="1.0.0-pre" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="1.0.0-pre">1.0.0-pre</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/1.0.0-rc1/README.md" data-name="1.0.0-rc1" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="1.0.0-rc1">1.0.0-rc1</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/gh-pages/README.md" data-name="gh-pages" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="gh-pages">gh-pages</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item selected">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/blob/master/README.md" data-name="master" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="master">master</a>
+            </div> <!-- /.select-menu-item -->
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div> <!-- /.select-menu-list -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.1.2/README.md" data-name="v1.1.2" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.1.2">v1.1.2</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.1.1/README.md" data-name="v1.1.1" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.1.1">v1.1.1</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.1.0/README.md" data-name="v1.1.0" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.1.0">v1.1.0</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.0.1/README.md" data-name="v1.0.1" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.0.1">v1.0.1</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.0.0-rc3/README.md" data-name="v1.0.0-rc3" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.0.0-rc3">v1.0.0-rc3</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.0.0-rc2/README.md" data-name="v1.0.0-rc2" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.0.0-rc2">v1.0.0-rc2</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/bluekvirus/Stage.js/tree/v1.0.0/README.md" data-name="v1.0.0" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target" title="v1.0.0">v1.0.0</a>
+            </div> <!-- /.select-menu-item -->
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div> <!-- /.select-menu-list -->
+
+    </div> <!-- /.select-menu-modal -->
+  </div> <!-- /.select-menu-modal-holder -->
+</div> <!-- /.select-menu -->
+
+  <div class="breadcrumb">
+    <span class="repo-root js-repo-root"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://github.com/bluekvirus/Stage.js" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">Stage.js</span></a></span></span><span class="separator"> / </span><strong class="final-path">README.md</strong> <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="README.md" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+  </div>
+</div>
+
+
+  <div class="commit file-history-tease">
+      <img alt="Tim (Zhiyuan) Liu" class="main-avatar js-avatar" data-user="1764731" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/1764731.png" height="24" width="24">
+      <span class="author"><a href="https://github.com/bluekvirus" rel="author">bluekvirus</a></span>
+      <time title="2014年5月29日 上午9:04" datetime="2014-05-29T09:04:52+08:00" is="relative-time">Thursday at 上午9:04</time>
+      <div class="commit-title">
+          <a href="https://github.com/bluekvirus/Stage.js/commit/303e96772d0d30488fe9500a697696508f9ecda0" class="message" data-pjax="true" title="Bump to 1.1.2
+
+dep libs updated as well.">Bump to 1.1.2</a>
+      </div>
+
+    <div class="participation">
+      <p class="quickstat"><a href="#blob_contributors_box" rel="facebox"><strong>1</strong>  contributor</a></p>
+      
+    </div>
+    <div id="blob_contributors_box" style="display:none">
+      <h2 class="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list">
+          <li class="facebox-user-list-item">
+            <img alt="Tim (Zhiyuan) Liu" class=" js-avatar" data-user="1764731" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/1764731.png" height="24" width="24">
+            <a href="https://github.com/bluekvirus">bluekvirus</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="file-box">
+  <div class="file">
+    <div class="meta clearfix">
+      <div class="info file-name">
+        <span class="icon"><b class="octicon octicon-file-text"></b></span>
+        <span class="mode" title="File Mode">file</span>
+        <span class="meta-divider"></span>
+          <span>123 lines (82 sloc)</span>
+          <span class="meta-divider"></span>
+        <span>7.261 kb</span>
+      </div>
+      <div class="actions">
+        <div class="button-group">
+            <a class="minibutton tooltipped tooltipped-w" href="github-windows://openRepo/https://github.com/bluekvirus/Stage.js?branch=master&amp;filepath=README.md" aria-label="Open this file in GitHub for Windows">
+                <span class="octicon octicon-device-desktop"></span> Open
+            </a>
+                <a class="minibutton tooltipped tooltipped-n js-update-url-with-hash" aria-label="Clicking this button will automatically fork this project so you can edit the file" href="https://github.com/bluekvirus/Stage.js/edit/master/README.md" data-method="post" rel="nofollow">Edit</a>
+          <a href="https://github.com/bluekvirus/Stage.js/raw/master/README.md" class="button minibutton " id="raw-url">Raw</a>
+            <a href="https://github.com/bluekvirus/Stage.js/blame/master/README.md" class="button minibutton js-update-url-with-hash">Blame</a>
+          <a href="https://github.com/bluekvirus/Stage.js/commits/master/README.md" class="button minibutton " rel="nofollow">History</a>
+        </div><!-- /.button-group -->
+
+            <a class="minibutton danger empty-icon tooltipped tooltipped-s" href="https://github.com/bluekvirus/Stage.js/delete/master/README.md" aria-label="Fork this project and delete file" data-method="post" data-test-id="delete-blob-file" rel="nofollow">
+
+          Delete
+        </a>
+      </div><!-- /.actions -->
+    </div>
+      
+  <div id="readme" class="blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a name="user-content-stagejs" class="anchor" href="#stagejs"><span class="octicon octicon-link"></span></a>Stage.js</h1>
+
+<p>This project produces <strong>Stage.js</strong> - an infrastructure for building modern web application client with many contexts (e.g a data-heavy administration app).</p>
+
+<h2>
+<a name="user-content-whats-next" class="anchor" href="#whats-next"><span class="octicon octicon-link"></span></a>What's next?</h2>
+
+<p>1.2.0 might bring:</p>
+
+<ul class="task-list">
+<li>Datagrid+ : select-all header/cell, details row;</li>
+<li>Editor+ : Spinner/Range, Switches, DnD Listing;</li>
+<li>local filter/sorter mech into list views; </li>
+<li>local pagination mech into list views (in addition to the remote one we already have); </li>
+</ul><h2>
+<a name="user-content-build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<p>Run <code>tools/build/shortcut.sh</code> and see dist for details.</p>
+
+<h2>
+<a name="user-content-deploy-able" class="anchor" href="#deploy-able"><span class="octicon octicon-link"></span></a>Deploy-able</h2>
+
+<p>The <code>/implementation</code> folder is also servable as a product intro &amp; download page of <strong>Stage.js</strong> releases.</p>
+
+<h2>
+<a name="user-content-core-concepts--workflow" class="anchor" href="#core-concepts--workflow"><span class="octicon octicon-link"></span></a>Core Concepts &amp; Workflow</h2>
+
+<p>See 'implementation/HOWTO.md'</p>
+
+<h2>
+<a name="user-content-tooling" class="anchor" href="#tooling"><span class="octicon octicon-link"></span></a>Tooling</h2>
+
+<p>See <code>/tools</code></p>
+
+<h2>
+<a name="user-content-license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright 2013 - 2014 Tim (Zhiyuan) Liu. 
+Under the <a href="http://opensource.org/licenses/MIT">MIT</a> License.</p>
+
+<h1>
+<a name="user-content-notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h1>
+
+<h2>
+<a name="user-content-continuous-integration" class="anchor" href="#continuous-integration"><span class="octicon octicon-link"></span></a>Continuous Integration</h2>
+
+<h3>
+<a name="user-content-gitlab_ci-fix-trouble-shooting" class="anchor" href="#gitlab_ci-fix-trouble-shooting"><span class="octicon octicon-link"></span></a>gitlab_ci fix: trouble shooting</h3>
+
+<h4>
+<a name="user-content-1-allow-guest-ssh-to-clone-repo-in-build" class="anchor" href="#1-allow-guest-ssh-to-clone-repo-in-build"><span class="octicon octicon-link"></span></a>1. Allow guest ssh to clone repo in build</h4>
+
+<p>(since we might have changed the host name during gitlab installation.)</p>
+
+<p><code>sudo su - gitlab_ci -c "ssh-keygen -R [your host name or ip, e.g: 172.22.4.24]"</code></p>
+
+<p>or</p>
+
+<p><code>sudo su - gitlab_ci -c "ssh git@[your host name or ip, e.g: 172.22.4.24]"</code></p>
+
+<p>and then accept to add host to known hosts.</p>
+
+<h4>
+<a name="user-content-2-build-script-format" class="anchor" href="#2-build-script-format"><span class="octicon octicon-link"></span></a>2. build script format</h4>
+
+<p><code>cmd1 &amp;&amp; cmd2 &amp;&amp; cmd3 &amp;&amp; ... &amp;&amp; cmd4 &amp;</code></p>
+
+<p>Do <strong>NOT</strong> hang the build script, use <code>&amp;</code> if needs be or avoid at all times.</p>
+
+<h2>
+<a name="user-content-classextend" class="anchor" href="#classextend"><span class="octicon octicon-link"></span></a><em>Class.extend</em>
+</h2>
+
+<p>Mind the prototypical (chain) inheritance, if B = A.extend({}) and 
+then C = B.extend({}), changing B through B' = B.extend({+ properties}) 
+will <strong>NOT</strong> affect C with newly added properties in 
+B'.prototype, since this new B' is not the one used to create the 
+C.prototype [coz C.prototype = new B() previously in C = B.extend({})]. 
+Use _.extend(B.prototype) instead. _.extend(B'.prototype) will not 
+affect previously/newly created C instances.</p>
+
+<p>New C() will still call the B/B'.apply(this, args) to create a new 
+instance of itself [coz C.constructor = function(){B/B'.apply(this, 
+args)}], thus B' = B.extend({* constructor}) can work in Backbone since 
+this B' function will be executed again whenever a new C() is called. 
+However, the prototypical chain B-&gt;C is now broken. C will have to 
+extend from B' again to pick up _.extend(B'.prototype, {...}) added 
+properties. (C's descendents will have to do the extend along the 
+prototypical chain all over again...)</p>
+
+<p>Note that Backbone define its special inheritance method extend({}) to accept {constructor} overridden, like this:</p>
+
+<pre><code>...
+    // The constructor function for the new subclass is either defined by you
+    // (the "constructor" property in your `extend` definition), or defaulted
+    // by us to simply call the parent's constructor.
+    if (protoProps &amp;&amp; _.has(protoProps, 'constructor')) {
+      child = protoProps.constructor;
+    } else {
+      child = function(){ return parent.apply(this, arguments); };
+    }
+...
+</code></pre>
+
+<p>This is why B' = B.extend({* constructor}) works, it is never to 
+change B.prototype.constructor, but to directly change B. This is how js
+ works. When a function (like B) is defined, B.prototype.constructor 
+gets created, it is just a property, changing it will not affect the way
+ <em>new</em> B() behaves. B will still be called instead of the <em>changed</em> B.prototype.constructor, if you ever tried to change it.</p>
+
+<p>Note that by doing C.prototype = new B' again after B' = B.extend() 
+will amend the broken prototypical chain for C and C only, it will not 
+work for D (D = C.extend()) because chain C-&gt;D is now broken... D 
+will suffer from possible property lost.</p>
+
+<p>However, Backbone supports changing B.prototype.constructor to affect
+ C without affecting new B instances. Since all Backbone classes use 
+parent.prototype.constructor.apply() instead of just parent.apply() like
+ in its extend method (supported by the extend method itself, see above 
+code block)</p>
+
+<p>Note that You can always augment a new B() by _.extend(B.prototype, 
+{+ properties}) or (new B())[+ property] = ...; Only the former can 
+affect C (C = B.extend()) since C.prototype = new B() and every instance
+ of B will have it's property inherited from B.prototype. (The 
+prototypical chain is walked dynamically upon searching of a property or
+ method, so a later change to the B.prototype can still affect 
+previously created B and C instances, you can think of B.prototype as a 
+symbolic ref which will be interpreted each time the 
+chain-walking-searching happens)</p>
+
+<p>Again, remember changing B.prototype.constructor will not bring wanted effect as B' = B.extend({<em>constructor}) would. And after B' = B.extend({</em>
+ constructor}), if you still want _.extend(B'.prototype) to mean 
+something in C, move it up before B' = B.extend({* constructor});</p>
+
+<p>_.extend(X.prototype) will affect both already and newly created instances of X and those extended from X.</p>
+
+<p>Don't mess up the chain by just re-assigning X.prototype (since it 
+will break the chain). Do 'X = Y(){...} and then X'.prototype = new X 
+and lastly X'.prototype.constructor = X'. If you want to add more 
+property to Z (Z = X.extend) through X', put altered construction code 
+in Y(){} and add new property to Z through _.extend(X.prototype) instead
+ of on X'. If you don't need to alter X itself, <strong>in Backbone</strong>,
+ just do X.prototype.constructor = Y(){ ...; X.apply(this, arguments);},
+ this will only affect new instances of X's descendants.</p>
+
+<h2>
+<a name="user-content-ghost-view" class="anchor" href="#ghost-view"><span class="octicon octicon-link"></span></a><em>Ghost View</em>
+</h2>
+
+<p>This is caused by removing a view's html but leaving the event 
+listeners 'on'... Thus make sure you remove a view's html together with 
+the event listeners by invoking the <code>view.close()</code>(Marionette) method, which will in turn invoke the <code>view.undelegateEvents()</code>(Backbone) method which will further grab <code>$.off</code>(jQuery) to clean up the listeners.</p>
+
+<p>Note that calling <code>region.show()</code> will automatically <code>close()</code> the previously shown view object, the view object closed will still exist in the js runtime, if you somehow decide to <code>show()</code> it again, you need to manually call <code>view.delegateEvents()</code> to re-activate the event listeners.</p>
+
+<p>In other words, if you <code>show()</code> an old view without re-<code>new()</code> it, you will have to hook up the events again using <code>view.delegateEvents()</code>.</p>
+
+<p>Also, please use the <code>events:{...}</code> block to register listeners in a view definition, stop using <code>$.on()</code> in case you forgot to use <code>$.off()</code>.</p>
+
+<p>If you have to use <code>$.on()</code> use it in a delegated form (on a parent dom object).</p>
+
+<h2>
+<a name="user-content-ie6-9" class="anchor" href="#ie6-9"><span class="octicon octicon-link"></span></a>IE(6-9)</h2>
+
+<p>Before IE10, some efforts are still needed before the web app can 
+work on an IE browser. We've prepared to add the following lib/tool to 
+accommodate this in the future: (though we don't want to...)</p>
+
+<ol class="task-list">
+<li>selectivizr.js - client libs (already added in bower.json, not in 
+use) We need to disable our app theme-roller for IE after adding this 
+into index.html.</li>
+</ol><pre><code>&lt;!--[if (gte IE 6)&amp;(lte IE 8)]&gt;
+  &lt;script type="text/javascript" src="selectivizr.js"&gt;&lt;/script&gt;
+  &lt;noscript&gt;&lt;link rel="stylesheet" href="[fallback css]" /&gt;&lt;/noscript&gt;
+&lt;![endif]--&gt;
+</code></pre>
+
+<ol class="task-list">
+<li>fixmyjs - client tools npm (already added in package.json, not in 
+use) Need to put it into both build and spawn tool (shared/hammer.js) 
+before js minification. This will fix the extra commas that IE complains
+ about.</li>
+</ol></article>
+  </div>
+
+  </div>
+</div>
+
+<a href="#jump-to-line" rel="facebox[.linejump]" data-hotkey="l" class="js-jump-to-line" style="display:none">Jump to Line</a>
+<div id="jump-to-line" style="display:none">
+  <form accept-charset="UTF-8" class="js-jump-to-line-form">
+    <input class="linejump-input js-jump-to-line-field" placeholder="Jump to line…" autofocus="" type="text">
+    <button type="submit" class="button">Go</button>
+  </form>
+</div>
+
+</div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com/">API</a></li>
+      <li><a href="http://training.github.com/">Training</a></li>
+      <li><a href="http://shop.github.com/">Shop</a></li>
+      <li><a href="https://github.com/blog">Blog</a></li>
+      <li><a href="https://github.com/about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>© 2014 <span title="0.09759s from github-fe134-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy">Privacy</a></li>
+        <li><a href="https://github.com/security">Security</a></li>
+        <li><a href="https://github.com/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w" aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-x close js-ajax-error-dismiss"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/frameworks-f120624597a361065113e4c5852f2894459aba3a.js" type="text/javascript"></script>
+      <script async="async" crossorigin="anonymous" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/github-063276c9ee5974f7ef1bf34b7a8f7c5f4a4ea72e.js" type="text/javascript"></script>
+      
+      
+        <script async="" src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/analytics.js"></script>
+  
+
+
+<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" class="global-zeroclipboard-container" id="global-zeroclipboard-html-bridge">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" height="100%" width="100%">         <param name="movie" value="https://assets-cdn.github.com/flash/ZeroClipboard.v1.3.2.swf">         <param name="allowScriptAccess" value="always">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=github.com%2C%2F%2Fgithub.com%2Chttps%3A%2F%2Fgithub.com%2Cgithub.com%2C%2F%2Fgithub.com%2Chttps%3A%2F%2Fgithub.com">         <embed src="Stage.js_README.md%20at%20master%20%C2%B7%20bluekvirus_Stage.js_files/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="global-zeroclipboard-flash-bridge" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=github.com%2C%2F%2Fgithub.com%2Chttps%3A%2F%2Fgithub.com%2Cgithub.com%2C%2F%2Fgithub.com%2Chttps%3A%2F%2Fgithub.com" scale="exactfit" height="100%" width="100%">                </object></div>    <div class="facebox" id="facebox" style="display:none;">       <div class="facebox-popup">         <div class="facebox-content">         </div>         <button type="button" class="facebox-close js-facebox-close">           <span class="octicon octicon-remove-close"></span>         </button>       </div>     </div></body></html>

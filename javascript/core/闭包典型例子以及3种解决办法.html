@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset="gbk"/>
+        <title>闭包演示</title>
+        <style type="text/css">
+            p {background:gold;}
+        </style>
+
+    </head>
+    <body >
+        <p>0</p>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </body>
+
+    <script type="text/javascript">
+        /** error version
+        function init() {
+            var pAry = document.getElementsByTagName("p");
+            for( var i=0; i<pAry.length; i++ ) {
+                 pAry[i].onclick = function() {
+                    alert(i);
+                }
+            }
+        }**/
+        /** v1
+        function init() {
+            var pAry = document.getElementsByTagName("p");
+            for( var i=0; i<pAry.length; i++ ) {
+                show(i);
+            }
+            function show(i) {
+                pAry[i].onclick = function() {
+                    alert(i);
+                }
+            }
+        }**/  
+        /** v2 匿名函数
+        function init() {
+            var pAry = document.getElementsByTagName("p");
+            for( var i=0; i<pAry.length; i++ ) {
+                (function(i){
+                    pAry[i].onclick = function() {
+                        alert(i);
+                    }  
+                })(i);
+            }
+        } */  
+    
+       /** 理解闭包
+         // 原始写法
+         function show(){
+            var i = 1;
+	    function pShow(){
+                i++;
+		alert(i);
+	    }
+            return pShow;
+         }
+         var s = show();
+         s();
+         s();
+         function show(){
+             var i = 1;
+             return function(){
+                 i++;
+                 alert(i);
+             }
+         }     
+        */
+       /** 函数声明改写函数表达式
+        
+        */
+        /** v3 典型闭包
+        function init() {
+            var pAry = document.getElementsByTagName("p");
+            for( var i=0; i<pAry.length; i++ ) {
+               //pAry[i].onclick = function() {
+               //      alert(i);
+               //}
+                 pAry[i].onclick = (function(i){
+                     return function(){
+                         alert(i);
+                     }
+                 })(i);
+            }
+        }    
+        */
+        init();
+    </script>
+</html>

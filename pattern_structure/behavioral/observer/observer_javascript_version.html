@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The event of observer</title>
+    <!-- Le styles -->
+    <link href="../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">                               
+    <script type="text/javascript" src="../../lib/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../../lib/underscore.js"></script>
+    <script type="text/javascript" src="../../lib/backbone.js"></script>   
+    <script type="text/javascript" src="../../lib/backbone.marionette.js"></script>    
+    <style>
+    	.form-view {
+    		background-color: red;
+    	}
+    </style>                               
+  </head>
+  <body>
+    <div class="container-fluid">
+    	<div class="body">
+    	</div>
+    </div><!--/.fluid-container-->
+    <script type="text/javascript">
+    $(document).ready(function(){
+    
+    	/** 
+    	  *1. Based on model.
+    	var DataGridView = Backbone.View.extend({
+  			className: "datagrid-view",
+  			events: {
+    			"click input[name='show']": "show"
+  			},
+  			template: _.template($('#datagrid-view').html()),	    
+			show: function(){
+			    $(".body").append(new FormView().render().$el);    
+			},
+  			render: function() {
+  				this.$el.html(this.template());
+  				return this;
+  			}
+		});
+
+		$(".body").html(new DataGridView().render().$el);    
+		
+	    var FormView = Backbone.View.extend({
+  			className: "form-view",
+  			template: _.template($('#from-view').html()),	    
+  			render: function() {
+  				this.$el.html(this.template());
+  				return this;
+  			}
+		});	
+		*/
+		
+		/**
+		 * 2. The right way of observer pattern?
+		 */
+	    var FormView =  Backbone.Marionette.ItemView.extend({
+  			className: "form-view",
+  			template: "#from-view",
+			initialize:function(){
+				this.listenTo(this,"from:opt:show",this.show);
+			},		
+			show: function() {
+				$(".body").append(this.render().$el);
+			}
+		});	
+		
+    	var DataGridView = Backbone.Marionette.ItemView.extend({
+  			className: "datagrid-view",
+  			template: "#datagrid-view",
+			initialize:function(options){
+				this.observer = options.observer;
+			},	  			
+  			events: {
+    			"click input[name='show']": "show"
+  			},
+  			show: function() {
+  				this.observer.trigger("from:opt:show");
+  			}
+		});
+
+		var dataGrid = new DataGridView({"observer":new FormView()});
+		$(".body").html(dataGrid.render().$el);    
+		
+		
+		/** 
+		  * 3. The truth of observer pattern.
+    	var DataGridView = Backbone.Marionette.ItemView.extend({
+  			className: "datagrid-view",
+  			template: "#datagrid-view",
+  			triggers: {
+    			"click input[name='show']" :"datagrid:opt:show"
+  			}
+		});
+
+		var dataGrid = new DataGridView();
+		$(".body").html(dataGrid.render().$el);    
+		
+	    var FormView =  Backbone.Marionette.ItemView.extend({
+  			className: "form-view",
+  			template: "#from-view",
+			initialize: function(options){
+				this.subject = options.subject;
+				this.listenTo(this.subject, "datagrid:opt:show", this.show);			
+			},
+			show: function() {
+				$(".body").append(this.render().$el);
+			}
+		});	
+		var formView = new FormView({"subject":dataGrid})
+		*/
+	
+    });
+
+    </script>
+
+
+	<script type="text/template" id="datagrid-view">
+		<input type="button" name="show" value="show">
+	</script>
+	
+	<script type="text/template" id="from-view">
+		show detail
+	</script>	
+  </body>
+</html>

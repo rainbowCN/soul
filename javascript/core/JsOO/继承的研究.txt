@@ -1,0 +1,211 @@
+>>>>>>>>>>>>>>>>>>OO中继承的基本要求>>>>>>>>>>>>>>>>>>
+
+Class A<- Class B<- ClassC
+
+1、B增加属性、方法不会影响A
+   *特例，B增加属性、方法会影响b1、b2...
+2、B增加属性、方法会影响C
+3、b、c instanceOf A true
+
+
+>>>>>>>>>>>>>>>>>>prototype对于原形的重要性>>>>>>>>>>>>>>>>>>
+*原形除了保存引用，使用原型的另一个必要在于继承树的建立。这一过程要求new运算符的参与，简单说来，就是"子类.prototype"必须赋值为"new 父类()"所产生的一个实例。
+e.g.
+==================code==================
+function MyObject() {   
+}  
+function MyObjectEx() {  
+}  
+MyObjectEx.prototype = new MyObject();  
+MyObjectEx.prototype.constructor = MyObjectEx;
+==================code==================
+
+*在这个过程中，最后面的是一行修正代码。这行修正的必要性在于：new MyObject()所产生的实例的属性x.constructor总是指向MyObject，而在子类MyObjectEx()中，它应该是指向MyObjectEx的。
+
+*"new"总是因为建立原型继承树而存在的，如果没有new过程参与，则当obj = new MyObjecEx()时，我们无法通过instanceof运算：obj instanceof MyObject来了解obj在继承树上的关系。
+
+
+>>>>>>>>>>>>>>>>>>"new"背后做的事情>>>>>>>>>>>>>>>>>>
+function MyObject(x) {  
+    this.x =x;
+}  
+//var obj = new MyObject("x");
+//console.log(obj);
+//console.log(obj.x);
+
+/** orgin
+obj = new Object();  
+obj.constructor = MyObject;  
+obj.constructor("x"); 
+console.log(obj);
+console.log(obj.x);
+*/
+
+/** senior
+obj = new Object();  
+obj.constructor = MyObject;  
+MyObject.call(obj, "x")
+console.log(obj);
+console.log(obj.x);
+*/
+
+/** senior
+obj = Object.create({  
+  constructor: MyObject  
+});  
+MyObject.call(obj, x);
+console.log(obj);
+console.log(obj.x);
+*/
+
+>>>>>>>>>>>>>>>>>>原型继承(包括原型链维护)与构造器调用分离>>>>>>>>>>>>>>>>>>
+*通过类似于Object.create()的方案，来保证原型链的有效性；又通过独立的类创建或对象创建过程，来保证系统的可扩展性。就是我们现在的JS OOP的来源了。
+==================code==================
+    A = {};  
+    B = Object.create(A);  
+    C = Object.create(B);  
+    A.x = 1;  
+    B.y = 2;  
+    C.z = 3;  
+      
+    function MyObject() {  
+    }  
+      
+    function MyObjectEx() {  
+    }  
+      
+    MyObject.prototype = B;  
+    MyObjectEx.prototype = C;  
+
+    obj1 = new MyObject();  
+    obj2 = new MyObjectEx();  
+  
+    // 显示true, obj2是MyObject()的子类的实例  
+    alert(obj2 instanceof MyObject);  
+  
+    // 显示false, z属性不会出现在MyObject()的实例中  
+    alert('z' in obj1); 
+==================code==================
+
+
+>>>>>>>>>>>>>>>思考QoBean中的Unique()函数>>>>>>>>>>>>>>>>>>
+==================code==================
+function _new(obj, func, args) {  
+  function F() {}  
+  F.prototype = obj, F = new F;  
+  obj = func ? func.apply(F, args||[]) : F;  
+  return (typeof obj).match(/object|function/) ? obj || F : F;  
+} 
+==================code==================
+
+>>>>>>>>>>>>>>>推荐的类extend方式（原型链维护）>>>>>>>>>>>>>>>>>>
+==================code==================
+function A(){
+ this.a = "a";
+}
+function B(){
+ this.b = "b";
+}
+B.prototype = new A(); 
+B.prototype.constructor = B;
+
+A.prototype.getA = function(){
+   console.log("getA");
+}
+B.prototype.getB = function(){
+   console.log("getA");
+}
+
+var b = new B();
+console.log(b);
+console.log(b instanceof B);
+console.log(">>>>>>>>>>>>");
+console.log(b instanceof A);
+var a = new A();
+console.log(a);
+console.log(">>>>>>>>>>>>");
+console.log(a instanceof B);
+==================code==================
+
+
+>>>>>>>>>>>>>>>推荐的类extend方式（构造函数）>>>>>>>>>>>>>>>>>>
+function A(a){
+ this.a = a;
+}
+
+function B(a, b){
+  A.call(this, a);
+  this.b = b;
+}
+B.prototype = new A(); 
+B.prototype.constructor = B;
+
+A.prototype.getA = function(){
+   console.log("getA");
+}
+B.prototype.getB = function(){
+   console.log("getA");
+}
+
+var b = new B("b-a","b");
+console.log(b);
+console.log(b instanceof B);
+console.log(">>>>>>>>>>>>");
+console.log(b instanceof A);
+var a = new A("a");
+console.log(a);
+console.log(">>>>>>>>>>>>");
+console.log(a instanceof B);
+
+
+>>>>>>>>>>>>>>>思考代码>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>"B.prototype = new A();"与“B.prototype = A.prototype；”的区别？【解决】>>>>>>>>>>>>>>>
+
+*结果是true!，instanceof判断的是prototype，而不是A()或者B()。
+var a = new A();
+console.log(a instanceof B);
+*B添加的结果影响A!,可见“B.prototype = new A();”相当于B类有一个A类实例的属性！B类通过A类的实例共享A类的所有属性，而B没有获得A的prototype，B类的变化影响不到A类！
+B.prototype.getB = function(){
+   console.log("getA");
+}
+
+
+>>>>>>>>>>>>>>>"A.prototype.constructor" 构造函数的作用？>>>>>>>>>>>>>>>
+==================code==================
+function A(a){
+    this.a = a;
+}
+//A.prototype.constructor=function(a){this.a=a;}
+==================code==================
+
+>>>>>>>>>>>>>>>"A.prototype.constructor.call(this.a)"与"A.call(this.a)"的区别？>>>>>>>>>>>>>>>
+
+==================code==================
+function A(a){
+    this.a = a;
+}
+
+function B(a, b){
+  this.b = b;
+  A.prototype.constructor.call(this,a);
+}
+==================code==================
+
+==================code==================
+var a = new A();
+console.log(a);
+console.log(a.prototype);
+console.log(A);
+console.log(A.prototype.constructor); 
+==================code==================
+
+*“A.prototype.constructor.call(this,a);”指定后，"(b instanceof A)"为false！
+console.log(b instanceof A);
+
+
+参考资料：
+*《aimingoo的专栏》http://blog.csdn.net/aimingoo/article/details/6105048
+
+
+
+

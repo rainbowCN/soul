@@ -1,0 +1,29 @@
+>>>>>>>>>>>>>>>>>>1、prototype<<<<<<<<<<<<<<<<<<
+//css class&行间样式
+
+var arr1 = new Array(1,2,3,4,5)
+arr1.sum = function(){
+    var result = 0;
+    var i=0;
+    for(i=0;i<this.length;i++){
+        result+=this[i];
+    }
+    alert(result);
+}
+arr1.sum();
+var arr2 = new Array(1,2,3,4,5);
+arr2.sum();
+Array.prototype.sum()
+
+>>>>>>>>>>>>>>>>>>2、call&apply<<<<<<<<<<<<<<<<<<
+//call构造函数伪装
+function show(a, b){
+    alert('this：'+this+' a：'+a+' b：'+b));
+}
+show();
+show.call('test',1,2);
+show.apply('test',[1,2]);
+
+
+>>>>>>>>>>>>>>>>>>3、callee<<<<<<<<<<<<<<<<<<
+1、arguments.callee.aValue

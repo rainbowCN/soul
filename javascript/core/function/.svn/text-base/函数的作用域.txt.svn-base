@@ -1,0 +1,36 @@
+	/* 有问题的代码，bindClickForTag()提示未定义。
+	/*
+	/*
+	function addTagsByTypes(){
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			contentType:"application/x-www-form-urlencoded;charset=utf-8",
+			url:"tag.php?types="+gTypes,
+			success: function(data){
+				if(data.length>0){
+					for(var i=0;i<tags.length;i++){//为可选择的标签循环绑定click
+						bindClickForTag(i, tagName);	
+					}
+					function bindClickForTag(iNum, sTagName) {
+						
+					}	
+				}else{
+					
+				}
+			}
+		})	
+	};
+	
+	<script>
+		(function() {
+			for (var i = 0; i < 2; i++) {
+				t(i);
+				alert(this);
+			};
+			function t(iNum){
+				alert(this);
+				alert(iNum);
+			}
+		})();
+	</script>

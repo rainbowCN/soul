@@ -1,0 +1,56 @@
+>>>>>>>>>>>>>>>>>>1、闭包的定义<<<<<<<<<<<<<<<<<<
+1、闭包包括：函数运行实例的引用、环境(全局变量表)、upvalue引用组成的数组。
+闭包的生命周期：
+1、闭包和调用对象的生存周期，基本上可以归结为“函数实例”的生存周期
+2、javascript中的函数都具有“做为方法时依赖于对象生命周期”和“做为闭包时依赖于函数实例生存周期”这样的双重复杂性。
+3、javascript中函数被调用，即()运算时总是初始化一个闭包。
+4、函数实例与闭包是分别被管理的
+
+5、javascript在语法分析期将一个函数代码体中所有用var关键字声明的变量记入它自己的scriptObject的varDecls域，然后设定访问规则“如果当前函数的scriptObject.varDecls域中不存在该变量声明，则通过闭包.parent来取得上一层函数的scriptObject.varDecls作为upvalue。
+每个函数实例都有一份scriptObject的副本，因此“不同闭包访问到的私有变量不一致；”
+
+
+>>>>>>>>>>>>>>>>>>2、闭包的认识<<<<<<<<<<<<<<<<<<
+
+//Javascript闭包问题直观上是变量作用域的问题。Javascript存在着函数嵌套的语法结构，例如函数A嵌套函数B，闭包的作用之一便是让函数B可以访问到访问到函数A中的变量。代码如下：
+<script>
+var goal = 'v_goal';
+function A() {
+    var vf='father';
+    function B() {
+        alert(vf);   
+    }
+    return B;
+}
+var b = A();
+b();
+//A()();
+</script>
+
+//上面闭包的代码在工作中没有多大的意义，做过WEB开发的同学对下面的代码肯定不会陌生。DOM元素事件绑定是常见的闭包用法之一。
+<input type="button" value="sum" id="sum" />
+<script>
+var num1=num2=100;
+var btn=document.getElementById("sum");
+btn.onclick=function(){
+   alert(num1+num2);
+}
+</script>
+
+//还有一个闭包的典型Demo，工作中很常见其影子
+<script>
+for(var i=0; i<5; i++) {
+    function showIndex() {
+        alert(i);    
+    };
+    showIndex(); 
+}
+</script>
+
+//我们先不谈闭包的用法，也不一一列举闭包在标示符绑定、闭包生命周期的复杂性。我们用第一段最简洁和最具“代表性”的代码来解释闭包在Javascript这种函数式语言中是如何实现。直观上可以说闭包是函数变量作用域的问题，但函数一个静态的、编译期概念。函数就是functionA(){...}这段code，解释执行时在内存的二进制代码。而闭包是运行时的、动态的概念。我们理解这个蕴藏于动态的闭包之前，我们必须明确3个概念：函数、引用、对象。这3者在javascript中不是===的。就代码1来说，函数的概念就是functionA(){...}这段code。当var a1=a2=A(）时，a1、a2便是引用。对象呢？就是A()执行后，JS引擎构造出的object a。实例化object a的同时也在内存中构造了与之对应的闭包。闭包是作为与实例成对出现的数据，其包括函数运行实例的引用、环境(全局变量)、一个upvalue引用组成的数组。
+当JS引擎执行A()()时，便构造了function B的object b。此时的object b产生闭包，闭包包含了一个匿名引用、全局变量goal、以及upvalue数组，当然其中包括变量v_f。所以functionB可以访问到其function A的变量（注意这里提到的是变量而不是变量值）。在JS中，引用与对象不是1VS1的关系，但我们暂时可以认为对象和闭包时一一对应的。
+
+对象实质上是一个ScriptObject结构，其中包含了函数代码体中全部语法分析结构，包括内部变量表(varDecls)和内嵌函数表(funDecls),以及全部代码(source)。调用对象就是调用函数的ScriptObject结构；varDecls在语法分析器就已经创建好了，且总是在执行前就被初始化，但是函数执行结束并退出时，varDecls不被重置。正因为其不被重置，JS中的函数才能提供“在函数内保存数据”，这种语言特性。
+
+
+

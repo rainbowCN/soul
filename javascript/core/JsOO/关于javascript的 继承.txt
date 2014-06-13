@@ -1,0 +1,72 @@
+    今天突然很想分享一下面向对象编程(OOP)中的继承，确切的说是Javascript中的继承。如果你暂时不具备OPP或者继承的相关概念。请补充相关的知识点。我也会后续在blog中补充这方面的知识进去。
+    封装、继承、多态是OOP的三大特性，如果从Java语言的角度来阐述继承可能意义不大，因为作为老牌而且基于类模式的OOP语言。继承从概念到语法再到代码实现都非常清晰。然而Javascript的OOP基于原型模式且不怎么基于类，一个类只是需要时才被声明，而不是预定义一组用于创建对象的模板。这让那些熟悉基于类模式的程序员们会一时难以理解和转变。
+    面向过程or面向对象、基于原型or基于类的争论一直都是我们在开发中去思考和平衡的东西。原型模式的一个关键优势便是类可以在运行时修改，这在编程中赋予了极大的灵活性。
+    继承的概念是建立在类的基础之上，这里暂不讨论类在Javascript中五花八门的构建方式。这里以“混合的构造函数/原型方式”来说明问题，我直接以Joe Lennon的例子为蓝本，略加修改了些让我舒服的命名。
+    这是一个汽车类，有牌照(id)、当前速度、当前档位的成员变量；有加减速、加减档的成员方法。需要说明的是我们以当前速度作为加减档的依据，其实这是不科学的。自动挡汽车往往以发动机转速/分钟、驾驶者习惯来做出档位的决策。
+    <script>
+    function Car(id){
+	this.id = id;
+	console.log('Car with registration no. '+this.id+' created.');
+    }
+    Car.prototype.id = '';
+    Car.prototype.currentSpeed = 0;
+    Car.prototype.currentGear = 0;
+
+    Car.prototype.accelerate = function(increment) {
+        this.currentSpeed += increment;
+    }
+    Car.prototype.decelerate = function(decrement) {
+        this.currentSpeed -= decrement;
+    }
+    Car.prototype.increaseGear = function() {
+        this.currentGear++;
+    }
+    Car.prototype.decreaseGear = function() {
+        this.currentGear--;
+    }
+    </script>
+    你可以在Firefox的控制台中执行和观察如下代码：myCar = new Car('A00001'); console.log(myCar);为我们的下一步说明集成来做点暖场的工作。
+
+    一辆自动挡的汽车
+    <script>
+    function ATCar(id){
+	Car.call(this,id);
+    }
+    // Copy Car中所有的成员变量和方法
+    ATCar.prototype = new Car('0000');
+    // 重新绑定构造函数，否则new出来的都是Car object！
+    ATCar.prototype.constructor = ATCar;
+    ATCar.prototype.accelerate = function(increment) {
+        Car.prototype.accelerate.call(this, increment);
+        if(increment >= 10) {
+	    this.increaseGear();
+	} 
+    }
+
+    ATCar.prototype.decelerate = function(decrement) {
+        Car.prototype.decelerate.call(this, decrement);
+        if(this.currentSpeed === 0) {
+	    this.currentGear = 0;
+        } else if(decrement >= 10) {
+	    this.decreaseGear();
+	}
+    }
+    </script>
+    继承的主要目的和作用是实现代码复用(成员变量&方法)以及在子类中按照自己的逻辑去进行方法重写。Javascript中的复用我们需要借助prototype，将父类的成员变量&方法挂到子类之上。重写的时候，不论是构造函数还是成员方法依靠call进行对象冒充来实现。*.call(this,args)是Javascript调用父类的特殊语法，就像在Java中你需要使用super(args)那样！
+    发起call调用的原始函数，会将call参数中所处于环境上下文的this，替换原始函数自身的this。达到复用代码以及修改自身成员变量的作用！如果你还是不理解，可以参考下面的例子。call()&apply()其实作用相似，只是参数形式的不同。
+    <script>
+    function Car(){}
+
+    function ATCar(id){
+       console.log('this is: '+this);
+       console.log('id is: '+id);
+    }
+ 
+    ATCar('10001');
+    ATCar.call(Car,1);
+    ATCar.apply(Car,[1]);
+    </script>
+    我们可以从输出中看到ATCar中的this在经过call和apply之后，已由window变成了上下文中的Car了！
+
+    
+

@@ -1,0 +1,238 @@
+>>>>>>>>>>>>>>>>>>1、闭包的概念<<<<<<<<<<<<<<<<<<
+
+
+>>>>>>>>>>>>>>>>>>2、闭包的作用<<<<<<<<<<<<<<<<<<
+======a、全局变量污染======
+<script>
+
+//好处：
+//1.希望一个变量长期驻扎在内存当中
+//2.避免全局变量的污染
+//3.私有成员的存在
+
+//用法：
+//1.模块化代码
+//2.在循环中直接找到对应元素的索引
+
+/*var a = 1;
+function aaa(){
+	a++;
+	alert(a);
+}
+
+//aaa();  //2
+//aaa();  //3
+//alert(a);*/
+
+
+/*function aaa(){
+	var a = 1;
+	a++;
+	alert(a);
+}
+aaa();  //2
+aaa();  //2*/
+
+
+/*function aaa(){
+	var a = 1;
+	return function(){
+		a++;
+		alert(a);
+	}
+}
+
+var b = aaa();
+
+b();  //2
+b();  //3
+//alert(a);*/
+
+
+/*var aaa = (function(){
+
+	var a = 1;
+	return function(){
+		a++;
+		alert(a);
+	}
+
+})();
+
+aaa();  //2
+aaa();  //3*/
+
+var aaa = (function(){
+
+	var a = 1;
+	
+	function bbb(){
+		a++;
+		alert(a);
+	}
+	
+	function ccc(){
+		a++;
+		alert(a);
+	}
+	
+	return {
+		
+		b : bbb,
+		c : ccc
+		
+	}
+
+})();
+
+
+//aaa.b();  //2
+//aaa.c();  //3
+
+//alert(a);
+//alert(bbb);
+alert(ccc);
+
+</script>
+======b、私有成员存在======
+
+
+>>>>>>>>>>>>>>>>>>3、闭包的典型应用<<<<<<<<<<<<<<<<<<
+======a、事件绑定======
+<script>
+function Bbb()
+{
+	var _this=this;
+	this.b=5;
+	
+	document.getElementById('btn1').onclick=function ()
+	{
+		_this.show();
+	};
+}
+
+Bbb.prototype.show=function ()
+{
+	alert(this.b);
+};
+
+window.onload=function ()
+{
+	new Bbb();
+};
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="按钮" />
+</body>
+======b、定时器======
+<script>
+function A(){
+	this.i = 0;
+}
+A.prototype.show=function(){
+	alert(this.i);
+}
+var a = new A();
+a.show();
+
+function A(){
+	this.i = 0;
+        setInterval(this.show, 1000);
+}
+A.prototype.show=function(){
+	alert(this.i);
+}
+var a = new A();
+function A(){
+	this.i = 0;
+s	self = this;
+        setInterval(function(){
+		self.show();
+	}, 1000);
+}
+A.prototype.show=function(){
+	alert(this.i);
+}
+var a = new A();
+
+
+>>>>>>>>>>>>>>>>>>4、闭包的问题<<<<<<<<<<<<<<<<<<
+======a、js垃圾回收机制======
+
+//函数嵌套函数,内部函数可以引用外部函数的参数和变量,参数和变量不会被垃圾回收机制所收回
+
+/*function aaa(a){
+	
+	var b = 5;
+
+	function bbb(){
+		alert(a);
+		alert(b);
+	}
+
+}
+
+aaa();
+
+
+
+//JS中的垃圾回收机制
+
+function aaa(){
+	
+	var a = 1;
+	
+}
+
+aaa();*/
+
+function aaa(){
+	var a = 5;
+	function bbb(){
+		alert(a);
+	}
+	return bbb;
+}
+
+var c = aaa();
+
+c();
+
+</script>
+======b、ie中发生的内存泄露======
+<script>
+//IE下会引发内存泄漏
+
+/*window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	
+	oDiv.onclick = function(){
+		alert(oDiv.id);
+	};
+	
+	window.onunload = function(){
+		oDiv.onclick = null;
+	};
+	
+};*/
+
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	
+	var id = oDiv.id;
+	
+	oDiv.onclick = function(){
+		alert(id);
+	};
+	
+	oDiv = null;
+	
+};
+</script>
+</head>
+
+<body>
+<div id="div1">aaaa</div>
+</body>

@@ -1,0 +1,15 @@
+<script>
+var line="df2df    df34343";
+var sn="df2df";
+
+var frefix = sn+".*";
+var re =new RegExp(frefix,'g');
+var result = re.test(line);
+if(result){
+   var ec_ex = line.split(/\s+/g);
+   //var ec_ex = line.replace(/\s+/g,"#")
+   console.log(">>>>>>>>>>>",ec_ex[1]);
+} else {
+   console.log("ddddd");
+}
+</script>

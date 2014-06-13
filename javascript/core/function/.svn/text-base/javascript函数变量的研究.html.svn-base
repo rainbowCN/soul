@@ -1,0 +1,48 @@
+<script>
+    /**
+    var a=9;
+    (function(){
+        alert(this);
+	alert(this.a);
+	alert(this.b);
+	alert(a);
+	var a=8;
+	this.b=10;
+     })();
+     **/
+     
+     /** 
+     var a=9;
+     function test(){
+         alert(a);
+         var a = 8;
+     }
+     test();
+     */
+ 
+     //Çø·ÖUndefined
+     /**
+     var b = 100;
+     function test(){
+         alert(b);
+         //var b = 2;
+     }
+     test();
+     */
+     /**
+     function test(){
+         alert(this.a);
+
+         
+     }
+     test();
+     */
+(function(){
+    alert('hello,word');
+})();
+
+
+
+
+      
+</script>

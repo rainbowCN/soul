@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Q2.html</title>
+    <script src="../lib/jquery.js"></script>
+	<script>
+		/**
+	    (function(window, undefined){
+	    	function Origin(vArg) {
+	    		alert('O');
+				window.test = function(){
+					alert('test');
+				}
+				window.test();
+			}
+			function O(vArg){
+				return new Origin(vArg);
+			}
+			window.O = O;
+	    })(window);
+		
+		
+        O(function(){
+        	alert('ddd');
+        });
+		*/
+		function p(fnC) {
+			alert(typeof(fnC));
+			eval(fnC);
+		}
+
+		p(function(){
+			alert('ddd');
+		})
+		
+	</script>
+  </head>
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

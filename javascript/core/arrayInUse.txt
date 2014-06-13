@@ -1,0 +1,29 @@
+==================arrayObject(arrayX)==================
+<script type="text/javascript">
+    var a = [1,2,3];
+    document.write(a.concat(4,5));
+</script>
+
+======out put
+1,2,3,4,5
+
+==================arrayObject.slice(start,end)==================
+<script type="text/javascript">
+    var arr = new Array(3)
+    arr[0] = "George"
+    arr[1] = "John"
+    arr[2] = "Thomas"
+
+    document.write(arr + "<br />")
+    document.write(arr.slice(1) + "<br />")
+    document.write(arr)
+</script>
+
+======out put
+George,John,Thomas
+John,Thomas
+George,John,Thomas
+
+======extend[http://www.cnblogs.com/littledu/archive/2012/05/19/2508672.html]
+var a={length:2,0:'first',1:'second'};
+Array.prototype.slice.call(a); //  ["first", "second"]

@@ -1,0 +1,38 @@
+<script src="http://cdn.jsdelivr.net/jquery/1.10.2/jquery-1.10.2.js"></script>
+<script>
+$(document).ready(function() {
+    var data = {
+      "menus":[
+        {"id":1, "name":"H1", "menus": []},
+        {"id":2, "name":"H1", "menus": [{"id":3, "name":"H2", "menus": []},{"id":4, "name":"H2", "menus": [{"id":5, "name":"H3", "menus": []}]}]},
+        {"id":6, "name":"H1", "menus": []}
+      ]
+    }
+
+    function tree(menus, parent){
+      for(var key in menus) {
+        if(menus[key].menus.length>0){
+          var li = $("<li></li>");
+          $(li).append(menus[key].name).append("<ul></ul").appendTo(parent);
+          tree(menus[key].menus, $(li).children().eq(0));
+        } else {
+          $("<li></li>").append(menus[key].name).appendTo(parent);
+        }
+      }
+    }
+
+    var root = $("<ul></ul");
+    tree(data.menus, root);
+    $("#menu").append(root);
+});
+</script>
+<body>
+    <h1>H1</h1>  
+    <h1>H1</h1>
+    <h2>H2</h2>
+    <h2>H2</h2>
+    <h3>H3</h3>
+    <h1>H1</h1>
+    <hr>
+    <div id="menu"></div>
+</body>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>origin.js v0.1 demo</title>
+	<style type="text/css">
+		* {
+			font-size: 18px;
+	 		margin-top: 10px;
+		}
+		
+		#info {
+			color: white;
+			background: #25649F; 
+			height: 30px;
+			line-height: 30px;
+			text-align: left;
+		}
+		
+		#dev-log{
+			display: none;
+		}
+		#show {
+			margin-left: 10px;
+			font-size: 12px;
+			color: #25649F;
+		}
+		
+		#button {
+			border: 1px solid red; 
+			display: block;
+			width: 120px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+		
+		.btn {
+			border: 1px solid red; 
+			display: block;
+			width: 120px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+		
+		input {
+			float: left;
+		}
+	</style>
+	<script src="../src/origin.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			$("#button").click(function() {
+				alert("This is origin's ID selector!");
+			})
+			
+			$(".btn").click(function() {
+				alert("This is origin's class selector!");
+			})
+			
+			$("input").click(function() {
+				alert("This is origin's html tag selector!");
+			})
+			
+			$("#show").click(function() {
+				var doc = document.getElementById("dev-log");
+				if(doc.style.display=="none"||doc.style.display=="") {
+					doc.style.display="block";
+				} else {
+					doc.style.display="none";
+				}
+			})
+		};
+	</script>
+</head>
+<body>
+	<h1> origin JavaScript Library(V0.1) Demos<span id="show">(dev log)</span></h1>
+	<div id="dev-log">
+		2012-02-18 dev history
+		<ul>
+			<li>origin-构造函数构基础架构</li>
+			<li>origin-getElementByClass(...)</li>
+			<li>origin-addOEvent(...)</li>
+			<li>实现$调用</li>
+			<li>实现ID，class，html tag选择器</li>
+			<li>实现click方法</li>
+		</ul>
+	</div>
+	<div id="info">
+		There is some demo which example origin.s ID,class,html tag selector.
+	</div>
+	<div>
+		<span id="button">click me!</span>
+		<span class="btn">click me!</span>
+		<span class="btn">click me!</span>
+		<input type="button" value="click me!">
+	</div>
+	<div>
+
+</body>
+</html>

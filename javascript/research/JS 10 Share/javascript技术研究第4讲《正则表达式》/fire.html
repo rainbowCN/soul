@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+	<head>	
+    	<title>regular.html</title>
+    	<script>
+    		var keyStr = "A.B.c.def.g"
+    		//var keyStr = "A[2].b.c[3].d"
+    		keyStr = keyStr.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    		console.log('1>>>'+keyStr);
+	    	keyStr = keyStr.replace(/^\./, '');
+	    	console.log('2>>>'+keyStr);
+	    	var objTrace = keyStr.split('.'); 
+    	</script>
+  	</head>
+  	
+  	<body>
+    	This is my HTML page. <br>
+  	</body>
+</html>

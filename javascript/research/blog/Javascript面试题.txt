@@ -1,0 +1,28 @@
+Javascript面试题
+=============
+
+Javascript基本功
+------------------------
+> 1. ###|| &&的返回值###
+> 2. ###参数值传递和引用传递###
+    var noty = {id:1};
+	clearNoty = function(oNoty){
+							if(oNoty){
+								oNoty.id = 100;
+								oNoty = null;
+					  		}
+			           }
+	clearNoty(noty);
+	alert(oNoty.id);
+	
+Jquery的功力
+------------------------
+> 1. 闭包(Q1.html)
+	$(function(){
+		 	window.test = function(){
+		 		alert('test');
+		 	};
+	});
+	$(function(w){
+		 	w.test();
+	}(window));

@@ -1,0 +1,20 @@
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+	$(function() {
+		alert(this);
+		function fn1() {
+			alert('call fn1');
+		};
+		this.fn3 = function() {
+			alert('call fn3');
+		}
+		window.fn4 = function() {
+			alert('call fn4');
+		}
+	});
+	function fn2(){
+		alert('call fn2&this is '+this);
+	}
+	//fn2();
+	//fn3();
+</script>

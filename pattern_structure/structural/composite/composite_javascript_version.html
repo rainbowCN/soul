@@ -1,0 +1,51 @@
+<script src="http://cdn.jsdelivr.net/jquery/1.10.2/jquery-1.10.2.js"></script>
+<script>
+
+$(document).ready(function() {
+    function Componsite(sName) {
+      this.name = sName;
+      this.components = new Array();
+    }
+
+    Componsite.prototype.display = function() {
+      console.log(this.name);
+      if(this.components.length>0) {
+        var i = -1;
+        for (i= 0; i <this.components.length; i++) {
+            this.components[i].display();
+        }       
+      }
+    }
+   Componsite.prototype.push = function(oObj){
+      this.components.push(oObj);
+   }
+
+   var H1 = new Componsite('H1');
+   var H2_1 = new Componsite('>>>H2_1');
+   var H2_2 = new Componsite('>>>H2_2');
+   var H2_3 = new Componsite('>>>H2_3');
+    
+   var H3_1 = new Componsite('>>>>>>H3_1');
+   var H3_2 = new Componsite('>>>>>>H3_2');
+   var H3_3 = new Componsite('>>>>>>H3_3');
+
+   var H4_1 = new Componsite('>>>>>>>>>H4_1');
+
+   
+
+   H1.push(H2_1);
+   H1.push(H2_2);
+   H1.push(H2_3);
+
+   H2_1.push(H3_1);
+   H2_1.push(H3_2);
+   H2_2.push(H3_1);  
+   H2_3.push(H3_1);
+
+   H3_1.push(H4_1);
+
+   H1.display();
+
+  });
+
+</script>

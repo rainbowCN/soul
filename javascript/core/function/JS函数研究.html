@@ -1,0 +1,20 @@
+<script>
+function test(arg){
+	alert(arg);
+}
+//test('test');
+
+(function test(arg){
+	alert(arg);
+})('test');
+
+(function (arg){
+	alert('ddd');
+})('test');
+
+// 方法一：函数声明
+1	function foo() {}
+
+// 方法二：函数表达式
+1	var foo = function () {};
+</script>

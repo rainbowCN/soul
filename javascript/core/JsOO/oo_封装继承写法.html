@@ -1,0 +1,113 @@
+<script>
+/**原始的类的封装方法
+function Man(name, gender) {
+    var obj = new Object();
+    obj.name = $name;
+    obj.gender = $gender==null?'unknow':$gender;
+    obj.wordsStr = '';
+    this.attr=function(attr, value){
+        if(arguments.length==2){
+             this[attr] = value;
+        }else {
+             alert(this[attr]);
+        }
+    }
+    obj.words=function($word){
+        this.wordsStr += $word;
+    }
+    obj.say=function(){
+        alert(this.wordsStr);
+    }
+    return obj;
+}
+**/
+/** 封装完整的类并实现attr方法
+function Man(name, gender) {   
+    this.name = name;
+    this.gender = gender==null?'unknow':gender;
+    this.wordsStr = '';
+    this.attr=function(attr, value){
+        if(arguments.length==2){
+             this[attr] = value;
+        }else {
+             alert(this[attr]);
+        }
+    }
+    this.words=function($word){
+        this.wordsStr += $word;
+    }
+    this.say=function(){
+        alert(this.wordsStr);
+    }
+}
+
+var me = new Man('yu','male');
+me.show();
+me.attr('name');
+me.attr('name','yuzhenzhou');
+**/
+/**继承的实现
+function Worker($name, $gender, $job){
+    Man.call(this,$name,$gender);
+    this.job = $job;
+    this.test=function(){
+       alert('test');   
+    }
+}
+var she = new Worker('liu','female','design');
+she.test();
+*/
+/**
+function Man(options) {   
+    this.name = options.name;
+    this.gender = options.gender==null?'unknow':options.gender;
+    this.wordsStr = '';
+    this.attr=function(attr, value){
+        if(arguments.length==2){
+             this[attr] = value;
+        }else {
+             alert(this[attr]);
+        }
+    }
+    this.words=function($word){
+        this.wordsStr += $word;
+    }
+    this.say=function(){
+        alert(this.wordsStr);
+    }
+}
+
+var me = new Man({'name':'yu','gender':'male'});
+me.attr('name');
+me.attr('name','yuzhenzhou');
+me.attr('name');
+*/
+/**call的使用
+function show(){
+    alert(this);
+}
+show();
+show.call('aaa');
+show();
+*/
+
+/**json面向对象**/
+var p1 = {
+    name:'yzz',
+    sex:'male',
+    showName:function(){
+        alert(this.name);
+    }
+}
+p1.showName();
+var viewsoft = {};
+viewsoft.common = {
+    dataDispatcher:function(){
+        
+    }
+};
+viewsoft.tool = {
+    
+}
+viewsoft.common.dataDispatcher();
+</script>

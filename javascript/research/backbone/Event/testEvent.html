@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+</head>
+<body>
+<script src="../jquery-2.1.1.js"></script>
+<script src="../underscore.js"></script>
+<script src="../backbone.js"></script>
+<script>
+$(document).ready(function(){
+    /**
+	var object = {};
+	_.extend(object, Backbone.Events);
+	object.on('expand', function(){ alert('expanded'); });
+	object.trigger('expand');
+	*/
+	
+	var object = {
+		name : "james yu",
+		getName : function(){
+			console.log(this.name);
+		}
+	}
+	function expand() {
+		console.log("expand");
+	}
+	
+	// 调用on(...)将callback存在数据当中,
+	var callback = function(){ 
+		console.log("exec expanded");
+		this.getName();
+	}
+	
+	callback.call(object);
+	
+});
+</script>
+</body>
+</html>

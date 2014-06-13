@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Q1.html</title>
+    <script src="../../lib/jquery.js"></script>
+	<script>
+		$(function(){
+		 	window.test = function(){
+		 	};
+		});
+		// ok
+		$(function(){
+		 	test();
+		});
+		
+		// fail 
+		(function(){
+		 	window.test();
+		})();
+				
+		// fail 
+		$(function(w){
+		 	w.test();
+		}(window));
+		
+		// fail 
+		(function(w){
+		 	w.test();
+		})(window);
+
+	</script>
+  </head>
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

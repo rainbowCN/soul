@@ -1,0 +1,10 @@
+<script>   
+    var name = 'laruence';
+    function echo() {
+         alert(name);
+         var name = 'eve';
+         alert(name);
+         alert(age);
+    }
+    echo();  
+</script>
