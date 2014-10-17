@@ -1,3 +1,5 @@
+http://developer.51cto.com/art/200907/134913.htm
+
 >>>>>>>>>>>>>>>>>>OO中继承的基本要求>>>>>>>>>>>>>>>>>>
 
 Class A<- Class B<- ClassC
